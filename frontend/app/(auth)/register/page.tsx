@@ -47,7 +47,7 @@ export default function RegisterPage() {
             </div>
 
             {/* Right Column */}
-            <div className="p-8 flex flex-col justify-center bg-[#F8FAFC]">
+            <div className="p-8 flex flex-col justify-center bg-[#E3F3F0]">
                 <div className="w-full max-w-md mx-auto space-y-6">
                     <h2 className="text-3xl font-bold text-[#2B3990] mb-6">Registrarse</h2>
 
