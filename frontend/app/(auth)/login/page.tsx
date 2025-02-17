@@ -7,25 +7,23 @@ import Link  from "next/link"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { registerSchema } from "@/schemas/auth"
+import { loginSchema, registerSchema } from "@/schemas/auth"
 import { Eye, Mail, UserCircle2 } from "lucide-react"
 import { toast } from "sonner"
 import { AlertMessage } from "@/components/ui/alert"
 import { Separator } from "@/components/ui/separator"
 
 export default function LoginPage() {
-  const form = useForm<z.infer<typeof registerSchema>>({
-    resolver: zodResolver(registerSchema),
+  const form = useForm<z.infer<typeof loginSchema>>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
       password: "",
     },
   })
 
-  function onSubmit({ password, confirmPassword, ...values }: z.infer<typeof registerSchema>) {
-    if (password !== confirmPassword) {
-      return toast.error("Password not match")
-    }
+  function onSubmit({ ...values }: z.infer<typeof loginSchema>) {
+
     console.log(values)
   }
 
