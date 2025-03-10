@@ -14,4 +14,15 @@ public class Calificacion {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
+
+    @Column(name = "puntuacion")
+    private Integer puntuacion;
+
+    @Column(name = "comentario", length = 500)
+    private String comentario;
+
+
 }

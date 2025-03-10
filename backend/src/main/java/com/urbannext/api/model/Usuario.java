@@ -22,14 +22,14 @@ public class Usuario {
     @Column(name = "id_usuario")
     private Integer idUsuario;
 
-    @Column(name = "nombre", length = 255, nullable = false)
+    @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    @Column(name = "email", length = 255, unique = true, nullable = false)
-    @Pattern(regexp = "@", message = "El email debe contener '@'")
+    @Column(name = "email", unique = true, nullable = false)
+    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "El email debe ser válido")
     private String email;
 
-    @Column(name = "password", length = 255, nullable = false)
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Enumerated(EnumType.STRING)
@@ -54,7 +54,6 @@ public class Usuario {
     orphanRemoval = true)
     private List<Propiedad> propiedades;
 
-
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Chat> chats;
 
@@ -62,16 +61,13 @@ public class Usuario {
 
     }
 
-
     public boolean iniciarSesion(String password) {
         return this.password.equals(password); // provisorio
     }
 
-
     public boolean verificarIdentidad() {
         return true;
     }
-
 
 
 }
