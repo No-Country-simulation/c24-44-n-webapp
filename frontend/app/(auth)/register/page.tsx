@@ -18,6 +18,7 @@ import { registerSchema } from "@/schemas/auth"
 import { Eye, Mail, User, UserCircle2 } from "lucide-react"
 import { toast } from "sonner"
 import { AlertMessage } from "@/components/ui/alert"
+import Link from "next/link"
 
 
 export default function RegisterPage() {
@@ -47,7 +48,7 @@ export default function RegisterPage() {
             </div>
 
             {/* Right Column */}
-            <div className="p-8 flex flex-col justify-center bg-[#F8FAFC]">
+            <div className="p-8 flex flex-col justify-center bg-[#E3F3F0]">
                 <div className="w-full max-w-md mx-auto space-y-6">
                     <h2 className="text-3xl font-bold text-[#2B3990] mb-6">Registrarse</h2>
 
@@ -108,6 +109,11 @@ export default function RegisterPage() {
                                     </FormItem>
                                 )}
                             />
+                            <div className="py-6">
+
+                                <Link href="/login" className="my-2">Ya tienes cuenta? <span className="text-blue-400">Inicia session</span></Link>
+
+                            </div>
                             <AlertMessage form={form}
                                 onSubmit={() => form.handleSubmit(onSubmit)()}
                                 iconLucide={
