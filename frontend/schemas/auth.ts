@@ -1,5 +1,12 @@
 import { z } from "zod";
 
+type AuthRegisterForm = {
+  name: string,
+  email: string,
+  password: string,
+  confirmPassword: string
+};
+
 export const registerSchema = z.object({
   name: z.string().min(2, {
     message: "El nombre debe tener al menos 2 caracteres.",
@@ -11,7 +18,7 @@ export const registerSchema = z.object({
     message: "La contraseña debe tener al menos 6 caracteres.",
   }),
   confirmPassword: z.string()
-}).refine((data) => data.password === data.confirmPassword, {
+}).refine((data:AuthRegisterForm) => data.password === data.confirmPassword, {
   message: "Las contraseñas no coinciden",
   path: ["confirmPassword"],
 })
